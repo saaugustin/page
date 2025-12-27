@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO & GitHub Pages optimization -->
+    <title>৩০% হিসাব ক্যালকুলেটর | Bangla Percentage Calculator</title>
+    <meta name="description" content="বাংলায় সহজ ও সুন্দর ৩০% হিসাব ক্যালকুলেটর। একাধিক সংখ্যা যোগ করে ৩০% শেয়ার ও অবশিষ্ট টাকা বের করুন। GitHub Pages ready." />
+    <meta name="keywords" content="Bangla calculator, 30 percent calculator, percentage calculator bangla, হিসাব ক্যালকুলেটর" />
+    <meta name="author" content="mitul" />
+
+    <!-- Open Graph (social share) -->
+    <meta property="og:title" content="৩০% হিসাব ক্যালকুলেটর" />
+    <meta property="og:description" content="বাংলায় ৩০% শেয়ার ও অবশিষ্ট হিসাব করার সহজ ও সুন্দর টুল" />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Font (optimized) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #667eea;
+            --accent: #ff7a18;
+            --success: #2ecc71;
+            --text-main: #1e3c72;
+            --bg-soft: #f0f3ff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Noto Sans Bengali', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #4facfe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(180deg, #ffffff, var(--bg-soft));
+            border-radius: 32px;
+            padding: 32px 28px 26px;
+            text-align: center;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.4);
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 18px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 16px;
+            margin: 10px 0 6px;
+            font-size: 16px;
+            border-radius: 14px;
+            border: 1px solid #ccd3ff;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.25);
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #666;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), #ffb347);
+            color: #fff;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+        }
+
+        .btn-calc {
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--success), #27ae60);
+        }
+
+        .result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0;
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            font-size: 16px;
+        }
+
+        .total { border-left: 6px solid var(--primary); }
+        .share { border-left: 6px solid var(--accent); }
+        .remaining { border-left: 6px solid var(--success); }
+
+        .highlight {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-main);
+        }
+
+        .progress {
+            margin-top: 14px;
+            height: 10px;
+            background: #e0e6ff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            transition: width 0.4s ease;
+        }
+
+        .footer {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .footer span { font-weight: 600; color: var(--text-main); }
+
+        @media (max-width: 420px) {
+            h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<main class="card">
+    <h1>💰 ৩০% হিসাব ক্যালকুলেটর</h1>
+    <p class="subtitle">সহজ, পরিষ্কার ও সুন্দর Bangla ক্যালকুলেটর</p>
+
+    <input type="text" id="numberInput" placeholder="যেমন: 500 + 300 + 25" />
+    <div class="hint">একাধিক সংখ্যা <b>+</b> দিয়ে লিখুন, তারপর Enter বা বাটন চাপুন</div>
+
+    <button onclick="addNumber()">সংখ্যা যোগ করুন</button>
+
+    <div class="result total">
+        <span>📊 মোট যোগফল</span>
+        <span class="highlight" id="total">0</span>
+    </div>
+
+    <button class="btn-calc" onclick="calculateShare()">৩০% হিসাব দেখুন</button>
+
+    <div class="result share">
+        <span>🤝 ৩০% শেয়ার</span>
+        <span class="highlight" id="share">0</span>
+    </div>
+
+    <div class="result remaining">
+        <span>💼 ৩০% বাদে অবশিষ্ট</span>
+        <span class="highlight" id="remaining">0</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <footer class="footer">Made with ❤️ — <span>mitul</span></footer>
+</main>
+
+<script>
+    // ES5-safe (GitHub Pages compatible)
+    var total = 0;
+
+    function addNumber() {
+        var input = document.getElementById('numberInput');
+        var text = input.value;
+
+        if (!text) {
+            alert('অনুগ্রহ করে সংখ্যা লিখুন');
+            return;
+        }
+
+        var parts = text.split('+');
+        var sum = 0;
+
+        for (var i = 0; i < parts.length; i++) {
+            var num = parseFloat(parts[i].trim());
+            if (isNaN(num)) {
+                alert('ভুল ইনপুট পাওয়া গেছে');
+                return;
+            }
+            sum += num;
+        }
+
+        total += sum;
+        document.getElementById('total').innerText = total.toFixed(2);
+        input.value = '';
+    }
+
+    function calculateShare() {
+        var share = total * 0.30;
+        var remaining = total - share;
+
+        document.getElementById('share').innerText = share.toFixed(2);
+        document.getElementById('remaining').innerText = remaining.toFixed(2);
+        document.getElementById('progressBar').style.width = '30%';
+    }
+
+    document.getElementById('numberInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') addNumber();
+    });
+</script>
+
+</body>
+</html>
